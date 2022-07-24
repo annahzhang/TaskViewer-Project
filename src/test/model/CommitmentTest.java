@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Unit tests for Commitment class
 class CommitmentTest {
     private Commitment commitmentTest1;
     private Task task1;

@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Unit tests for Task class
 public class TaskTest {
     private Task taskTest1;
     private Calendar calendar1;

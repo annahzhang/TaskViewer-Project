@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents a long term commitment that has tasks
 public class Commitment {
     private String name;
     private String category;

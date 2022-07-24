@@ -2,6 +2,7 @@ package model;
 
 import java.util.Calendar;
 
+// Represents a task that either must be completed by a certain date or occurs on a certain date
 public class Task {
     private String name;
     private Calendar calendar;
