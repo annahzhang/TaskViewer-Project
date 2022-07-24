@@ -26,5 +26,4 @@ because I would understand my needs the best.
 * As a user, I want to be able to add different commitments such as classes, jobs, or volunteering to my agenda.
 * As a user, I want to be able to add different tasks and an attached date to each of my added commitments.
 * As a user, I want to be able to view a list of my tasks either organized within classes or altogether.
-    * As a user, I expect the list of tasks to be in chronological order.
 * As a user, I want to be able to separate my commitments into three categories, classes, jobs, and volunteering. 
