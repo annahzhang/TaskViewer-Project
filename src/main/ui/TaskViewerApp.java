@@ -98,6 +98,8 @@ public class TaskViewerApp {
     public void viewCommitments() {
         int numberList;
 
+        System.out.println("Commitments: ");
+
         for (int index = 0; index < taskViewer.getListOfCommitment().size(); index++) {
             numberList = index + 1;
             System.out.println(numberList + ". " + taskViewer.getListOfCommitment().get(index).getName());
@@ -154,8 +156,10 @@ public class TaskViewerApp {
         List<Task> specificTaskList;
         if (command == 0) {
             specificTaskList = taskViewer.getListofAllTasks();
+            System.out.println("All tasks in list: ");
         } else {
             specificTaskList = taskViewer.getListOfCommitment().get(command - 1).getTaskList();
+            System.out.println("Tasks in " + taskViewer.getListOfCommitment().get(command - 1).getName() + ": ");
         }
         for (Task task:specificTaskList) {
             System.out.println(task.getTaskName() + " due on " + dueDateToString(task.getDueDate()));
