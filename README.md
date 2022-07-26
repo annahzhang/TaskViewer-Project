@@ -26,4 +26,6 @@ because I would understand my needs the best.
 * As a user, I want to be able to add different commitments such as classes, jobs, or volunteering to my agenda.
 * As a user, I want to be able to add different tasks and an attached date to each of my added commitments.
 * As a user, I want to be able to view a list of my tasks either organized within classes or altogether.
-* As a user, I want to be able to separate my commitments into three categories, classes, jobs, and volunteering. 
+* As a user, I want to be able to separate my commitments into three categories, classes, jobs, and volunteering.
+* As a user, I want to be able to close the task viewer and have my entered commitments and tasks saved without being prompted to save them.
+* As a user, I want to be able to reopen the application and see the previously entered commitments and tasks.
