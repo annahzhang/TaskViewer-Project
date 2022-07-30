@@ -1,17 +1,20 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents the overall object that can view all commitments and tasks
 public class TaskViewer {
+    private String name;
     private List<Commitment> commitmentList;
-    private List<Task> taskList;
 
     // EFFECTS: creates a TaskViewer object that has an empty list of commitments and an empty list of tasks
-    public TaskViewer() {
+    public TaskViewer(String name) {
+        this.name = name;
         this.commitmentList = new ArrayList<>();
-        this.taskList = new ArrayList<>();
     }
 
     // MODIFIES: this
@@ -23,7 +26,6 @@ public class TaskViewer {
             return false;
         } else {
             this.commitmentList.add(commitment);
-            this.taskList.addAll(commitment.getTaskList());
             return true;
         }
     }
@@ -35,7 +37,36 @@ public class TaskViewer {
 
     // MODIFIES: this
     // EFFECTS: returns list of tasks
-    public List<Task> getListofAllTasks() {
-        return this.taskList;
+    public List<Task> getListOfAllTasks() {
+        List<Task> taskList = new ArrayList<>();
+        for (Commitment c: commitmentList) {
+            taskList.addAll(c.getTaskList());
+        }
+        return taskList;
     }
+
+    // EFFECTS: returns name saved with task list
+    public String getName() {
+        return this.name;
+    }
+
+    // EFFECTS: returns TaskViewer as a JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("Owner", this.name);
+        json.put("Commitments", commitmentsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns all commitments in task viewer as a json array
+    private JSONArray commitmentsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Commitment c : commitmentList) {
+            jsonArray.put(c.toJson());
+        }
+
+        return jsonArray;
+    }
+
 }

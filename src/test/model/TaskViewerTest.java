@@ -25,7 +25,7 @@ public class TaskViewerTest {
 
     @BeforeEach
     public void setUp() {
-        taskViewerTest1 = new TaskViewer();
+        taskViewerTest1 = new TaskViewer("Annah");
         commitment1 = new Commitment("CPSC 210", "class");
         commitment2 = new Commitment("Isaac Lab", "work");
 
@@ -57,8 +57,8 @@ public class TaskViewerTest {
 
     @Test
     public void testTaskViewer() {
+        assertEquals("Annah", taskViewerTest1.getName());
         assertEquals(0,taskViewerTest1.getListOfCommitment().size());
-        assertEquals(0, taskViewerTest1.getListofAllTasks().size());
     }
 
     @Test
@@ -67,8 +67,8 @@ public class TaskViewerTest {
         assertEquals(commitment1, taskViewerTest1.getListOfCommitment().get(0));
         assertEquals(1, taskViewerTest1.getListOfCommitment().size());
 
-        assertEquals(commitment1.getTaskList(), taskViewerTest1.getListofAllTasks());
-        assertEquals(3, taskViewerTest1.getListofAllTasks().size());
+        assertEquals(commitment1.getTaskList(), taskViewerTest1.getListOfAllTasks());
+        assertEquals(3, taskViewerTest1.getListOfAllTasks().size());
     }
 
     @Test
@@ -79,8 +79,8 @@ public class TaskViewerTest {
         assertEquals(commitment1, taskViewerTest1.getListOfCommitment().get(0));
         assertEquals(1, taskViewerTest1.getListOfCommitment().size());
 
-        assertEquals(commitment1.getTaskList(), taskViewerTest1.getListofAllTasks());
-        assertEquals(3, taskViewerTest1.getListofAllTasks().size());
+        assertEquals(commitment1.getTaskList(), taskViewerTest1.getListOfAllTasks());
+        assertEquals(3, taskViewerTest1.getListOfAllTasks().size());
     }
 
     @Test
@@ -96,7 +96,7 @@ public class TaskViewerTest {
         assertEquals(commitment2, taskViewerTest1.getListOfCommitment().get(1));
         assertEquals(2, taskViewerTest1.getListOfCommitment().size());
 
-        assertEquals(totalTaskList, taskViewerTest1.getListofAllTasks());
-        assertEquals(4, taskViewerTest1.getListofAllTasks().size());
+        assertEquals(totalTaskList, taskViewerTest1.getListOfAllTasks());
+        assertEquals(4, taskViewerTest1.getListOfAllTasks().size());
     }
 }

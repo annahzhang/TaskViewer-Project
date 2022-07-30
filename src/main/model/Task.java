@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 import java.util.Calendar;
 
 // Represents a task that either must be completed by a certain date or occurs on a certain date
@@ -53,5 +55,15 @@ public class Task {
     // EFFECTS: returns the completion status of task
     public boolean isComplete() {
         return this.complete;
+    }
+
+    // EFFECTS: returns contents of task as a JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("task", name);
+        json.put("due date", calendar);
+        json.put("type", type);
+        json.put("complete?", complete);
+        return json;
     }
 }

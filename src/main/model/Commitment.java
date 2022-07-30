@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,5 +44,25 @@ public class Commitment {
     // EFFECTS: returns list of tasks within a commitment
     public List<Task> getTaskList() {
         return this.taskList;
+    }
+
+    // EFFECTS: returns commitment as a JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("commitment", this.name);
+        json.put("category", this.category);
+        json.put("tasks", tasksToJson());
+        return json;
+    }
+
+    // EFFECTS: returns tasks in commitment as a JSON array
+    private JSONArray tasksToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Task t: taskList) {
+            jsonArray.put(t.toJson());
+        }
+
+        return jsonArray;
     }
 }

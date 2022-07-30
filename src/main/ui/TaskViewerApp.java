@@ -24,9 +24,11 @@ public class TaskViewerApp {
         boolean quit = false;
         String command;
         input = new Scanner(System.in);
-        taskViewer = new TaskViewer();
 
         System.out.println("Welcome to the Task Viewer!");
+        System.out.println("Please enter your name: ");
+        command = input.nextLine();
+        taskViewer = new TaskViewer(command);
 
         while (!quit) {
             initialUserMenu();
@@ -155,7 +157,7 @@ public class TaskViewerApp {
     public void viewTask(int command) {
         List<Task> specificTaskList;
         if (command == 0) {
-            specificTaskList = taskViewer.getListofAllTasks();
+            specificTaskList = taskViewer.getListOfAllTasks();
             System.out.println("All tasks in list: ");
         } else {
             specificTaskList = taskViewer.getListOfCommitment().get(command - 1).getTaskList();
@@ -193,7 +195,7 @@ public class TaskViewerApp {
         Task task = new Task(taskName, taskType);
         task.setDate(calendar);
         specifcCommitment.addTask(task);
-        taskViewer.getListofAllTasks().add(task);
+        taskViewer.getListOfAllTasks().add(task);
         System.out.println("Task added successfully!");
     }
 
