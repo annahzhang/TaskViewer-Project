@@ -1,0 +1,41 @@
+{
+  "owner": "Annah",
+  "commitments": [
+    {
+      "commitment": "CPSC 210",
+      "category": "class",
+      "tasks": [
+        {
+          "task": "Lab 1",
+          "due date": "9/5/2022",
+          "complete?": false,
+          "type": "lab"
+        },
+        {
+          "task": "Phase 1 Project",
+          "due date": "11/2/2022",
+          "complete?": false,
+          "type": "project"
+        }
+      ]
+    },
+    {
+      "commitment": "Hospital Volunteer",
+      "category": "volunteer",
+      "tasks": [
+        {
+          "task": "Volunteer Orientation",
+          "due date": "10/10/2022",
+          "complete?": false,
+          "type": "homework"
+        },
+        {
+          "task": "Session 1",
+          "due date": "2/13/2023",
+          "complete?": false,
+          "type": "work"
+        }
+      ]
+    }
+  ]
+}

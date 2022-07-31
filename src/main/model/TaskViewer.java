@@ -50,11 +50,14 @@ public class TaskViewer {
         return this.name;
     }
 
+    // code for last two methods based on Workroom from JsonSerializationDemo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
     // EFFECTS: returns TaskViewer as a JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("Owner", this.name);
-        json.put("Commitments", commitmentsToJson());
+        json.put("owner", this.name);
+        json.put("commitments", commitmentsToJson());
         return json;
     }
 

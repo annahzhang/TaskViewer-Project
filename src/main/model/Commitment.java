@@ -46,6 +46,9 @@ public class Commitment {
         return this.taskList;
     }
 
+    // code for last two methods based on Workroom from JsonSerializationDemo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
     // EFFECTS: returns commitment as a JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

@@ -57,13 +57,23 @@ public class Task {
         return this.complete;
     }
 
+    // code based on Thingy from JsonSerializationDemo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
     // EFFECTS: returns contents of task as a JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("task", name);
-        json.put("due date", calendar);
+        json.put("due date", dueDateToString());
         json.put("type", type);
         json.put("complete?", complete);
         return json;
+    }
+
+    // EFFECTS: converts the calendar object into a string
+    public String dueDateToString() {
+        String year = String.valueOf(calendar.get(Calendar.YEAR));
+        String month = String.valueOf(calendar.get(Calendar.MONTH) + 1);
+        String day = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+        return month + "/" + day + "/" + year;
     }
 }
