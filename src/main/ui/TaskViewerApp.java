@@ -3,18 +3,29 @@ package ui;
 import model.Commitment;
 import model.Task;
 import model.TaskViewer;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
 // Task viewer application
 public class TaskViewerApp {
+    private static final String JSON_STORE = "./data/taskViewer.json";
     private TaskViewer taskViewer;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private String command;
 
     // EFFECTS: initiates the Task viewer application
     public TaskViewerApp() {
+        input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runApp();
     }
 
@@ -22,8 +33,6 @@ public class TaskViewerApp {
     // EFFECTS: processes user input
     public void runApp() {
         boolean quit = false;
-        String command;
-        input = new Scanner(System.in);
 
         System.out.println("Welcome to the Task Viewer!");
         System.out.println("Please enter your name: ");
@@ -36,16 +45,18 @@ public class TaskViewerApp {
             if (command.equalsIgnoreCase("q")) {
                 quit = true;
             } else {
-                while (!(command.equalsIgnoreCase("v") || command.equalsIgnoreCase("a"))) {
+                while (!(command.equals("v") || command.equals("a") || command.equals("s") || command.equals("l"))) {
                     System.out.println("Input was not valid. Please try again.");
                     command = input.nextLine();
                 }
                 processInitialCommand(command);
-                command = input.nextLine();
-                processSecondaryCommand(command);
+                if (! (command.equals("l") || command.equals("s"))) {
+                    command = input.nextLine();
+                    processSecondaryCommand(command);
+                }
             }
         }
-        System.out.println("Thank you for using the Task Viewer!");
+        System.out.println("Thank you for using the Task Viewer " + taskViewer.getName() + "!");
     }
 
     // EFFECTS: displays initial user menu
@@ -53,6 +64,8 @@ public class TaskViewerApp {
         System.out.println("Choose what you want to do:");
         System.out.println("\tPress \"v\" to view your commitments and tasks.");
         System.out.println("\tPress \"a\" to add a new commitment or task.");
+        System.out.println("\tPress \"s\" to save your entries.");
+        System.out.println("\tPress \"l\" to load previously saved entries.");
         System.out.println("\tPress \"q\" to quit.");
     }
 
@@ -63,6 +76,10 @@ public class TaskViewerApp {
             viewerMenu();
         } else if (command.equalsIgnoreCase("a")) {
             addMenu();
+        } else if (command.equalsIgnoreCase("s")) {
+            saveTaskViewer();
+        } else if (command.equalsIgnoreCase("l")) {
+            loadTaskViewer();
         }
     }
 
@@ -205,5 +222,26 @@ public class TaskViewerApp {
         String month = String.valueOf(calendar.get(Calendar.MONTH) + 1);
         String day = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
         return month + "/" + day + "/" + year;
+    }
+
+    // EFFECTS: saves task viewer to file
+    public void saveTaskViewer() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(taskViewer);
+            jsonWriter.close();
+            System.out.println("Successfully saved " + taskViewer.getName() + "'s Task Viewer to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Cannot find file " + JSON_STORE);
+        }
+    }
+
+    public void loadTaskViewer() {
+        try {
+            taskViewer = jsonReader.read();
+            System.out.println(taskViewer.getName() + "'s Task Viewer is loaded from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Cannot find file " + JSON_STORE);
+        }
     }
 }
