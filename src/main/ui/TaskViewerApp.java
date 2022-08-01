@@ -191,26 +191,14 @@ public class TaskViewerApp {
     public void addTask(int command) {
         String taskName;
         String taskType;
-        int year;
-        int month;
-        int day;
         Commitment specifcCommitment = taskViewer.getListOfCommitment().get(command - 1);
 
         System.out.println("Enter name of task: ");
         taskName = input.nextLine();
         System.out.println("Enter task type: ");
         taskType = input.nextLine();
-        System.out.println("Enter year due: ");
-        year = Integer.parseInt(input.nextLine());
-        System.out.println("Enter month due (as a number): ");
-        month = Integer.parseInt(input.nextLine());
-        System.out.println("Enter day due: ");
-        day = Integer.parseInt(input.nextLine());
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month - 1, day);
         Task task = new Task(taskName, taskType);
-        task.setDate(calendar);
+        setDueDateForTask(task);
         specifcCommitment.addTask(task);
         taskViewer.getListOfAllTasks().add(task);
         System.out.println("Task added successfully!");
@@ -236,6 +224,7 @@ public class TaskViewerApp {
         }
     }
 
+    // EFFECTS: loads task viewer to console
     public void loadTaskViewer() {
         try {
             taskViewer = jsonReader.read();
@@ -243,5 +232,29 @@ public class TaskViewerApp {
         } catch (IOException e) {
             System.out.println("Cannot find file " + JSON_STORE);
         }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets due date for a certain task
+    private void setDueDateForTask(Task task) {
+        int year;
+        int month;
+        int day;
+        boolean validDate = true;
+        do {
+            if (!validDate) {
+                System.out.println("Invalid date, please enter a date after today's date.");
+            }
+            System.out.println("Enter year due: ");
+            year = Integer.parseInt(input.nextLine());
+            System.out.println("Enter month due (as a number): ");
+            month = Integer.parseInt(input.nextLine());
+            System.out.println("Enter day due: ");
+            day = Integer.parseInt(input.nextLine());
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(year, month - 1, day);
+            validDate = task.setDate(calendar);
+        } while (!validDate);
     }
 }
