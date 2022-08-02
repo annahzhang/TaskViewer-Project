@@ -20,20 +20,20 @@ public class TaskViewerApp {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private String command;
+    private boolean quit;
 
     // EFFECTS: initiates the Task viewer application
     public TaskViewerApp() {
         input = new Scanner(System.in);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+        quit = false;
         runApp();
     }
 
     // MODIFIES: this
     // EFFECTS: processes user input
     public void runApp() {
-        boolean quit = false;
-
         System.out.println("Welcome to the Task Viewer!");
         System.out.println("Please enter your name: ");
         command = input.nextLine();
@@ -45,17 +45,18 @@ public class TaskViewerApp {
             if (command.equalsIgnoreCase("q")) {
                 quit = true;
             } else {
-                while (!(command.equals("v") || command.equals("a") || command.equals("s") || command.equals("l"))) {
+                while (!(command.equals("v") || command.equals("a") || command.equals("l"))) {
                     System.out.println("Input was not valid. Please try again.");
                     command = input.nextLine();
                 }
                 processInitialCommand(command);
-                if (! (command.equals("l") || command.equals("s"))) {
+                if (!command.equals("l")) {
                     command = input.nextLine();
                     processSecondaryCommand(command);
                 }
             }
         }
+        saveTaskViewer();
         System.out.println("Thank you for using the Task Viewer " + taskViewer.getName() + "!");
     }
 
@@ -64,7 +65,6 @@ public class TaskViewerApp {
         System.out.println("Choose what you want to do:");
         System.out.println("\tPress \"v\" to view your commitments and tasks.");
         System.out.println("\tPress \"a\" to add a new commitment or task.");
-        System.out.println("\tPress \"s\" to save your entries.");
         System.out.println("\tPress \"l\" to load previously saved entries.");
         System.out.println("\tPress \"q\" to quit.");
     }
@@ -76,8 +76,6 @@ public class TaskViewerApp {
             viewerMenu();
         } else if (command.equalsIgnoreCase("a")) {
             addMenu();
-        } else if (command.equalsIgnoreCase("s")) {
-            saveTaskViewer();
         } else if (command.equalsIgnoreCase("l")) {
             loadTaskViewer();
         }

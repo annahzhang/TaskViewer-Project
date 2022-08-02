@@ -1,13 +1,20 @@
 {
     "owner": "Annah",
-    "commitments": [{
-        "commitment": "csdfs",
-        "category": "fdfs",
-        "tasks": [{
-            "task": "dfd",
-            "due date": "1/23/232323",
-            "complete?": false,
-            "type": "dfsd"
-        }]
-    }]
+    "commitments": [
+        {
+            "commitment": "CPSC 210",
+            "category": "class",
+            "tasks": [{
+                "task": "Phase 2",
+                "due date": "8/3/2022",
+                "complete?": false,
+                "type": "project"
+            }]
+        },
+        {
+            "commitment": "Lab",
+            "category": "work",
+            "tasks": []
+        }
+    ]
 }
