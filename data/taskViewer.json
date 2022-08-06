@@ -1,18 +1,18 @@
 {
-    "owner": "Annah",
+    "owner": "A",
     "commitments": [
         {
             "commitment": "CPSC 210",
             "category": "class",
-            "tasks": [{
-                "task": "Phase 2",
-                "due date": "8/3/2022",
-                "complete?": false,
-                "type": "project"
-            }]
+            "tasks": []
         },
         {
-            "commitment": "Lab",
+            "commitment": "Isaac Lab",
+            "category": "work",
+            "tasks": []
+        },
+        {
+            "commitment": "MATH 100 TA",
             "category": "work",
             "tasks": []
         }
