@@ -29,3 +29,11 @@ because I would understand my needs the best.
 * As a user, I want to be able to separate my commitments into three categories, classes, jobs, and volunteering.
 * As a user, I want to be able to close the task viewer and have my entered commitments and tasks saved without being prompted to save them.
 * As a user, I want to be able to reopen the application and see the previously entered commitments and tasks.
+
+## Instructions for Grader
+
+1. You can generate the first required event by clicking on the add commitment button or add task button, if commitments are already added
+2. You can generate the second required event by clicking the show commitment button.
+3. You can locate my visual component by clicking the save file button.
+4. You can save the state of my application by clicking the save file button.
+5. You can reload the state of my application by clicking the load file button.
