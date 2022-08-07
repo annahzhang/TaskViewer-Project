@@ -66,8 +66,6 @@ public class AddTaskButton extends TaskButton {
         monthField = new JTextField(5);
         dayField = new JTextField(5);
 
-        System.out.println("creating text fields");
-
         JPanel addTaskPanel = new JPanel();
         addTaskPanel.add(new JLabel("Task Name: "));
         addTaskPanel.add(nameField);
@@ -79,8 +77,6 @@ public class AddTaskButton extends TaskButton {
         addTaskPanel.add(monthField);
         addTaskPanel.add(new JLabel("Day Due: "));
         addTaskPanel.add(dayField);
-
-        System.out.println("made input prompts");
 
         int result = JOptionPane.showConfirmDialog(null, addTaskPanel,
                 "Please fill out necessary information", JOptionPane.OK_CANCEL_OPTION);

@@ -5,6 +5,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -45,9 +46,28 @@ public class SaveFileButton extends Button {
             jsonWriter.write(taskViewer);
             jsonWriter.close();
             System.out.println("Successfully saved " + taskViewer.getName() + "'s Task Viewer to " + JSON_STORE);
+            displaySuccessPage();
         } catch (FileNotFoundException e) {
             System.out.println("Cannot find file " + JSON_STORE);
         }
+    }
+
+    // EFFECTS: displays an image when file is successfully saved
+    private void displaySuccessPage() {
+        JFrame successFrame = new JFrame("Success!");
+        successFrame.setLayout(new FlowLayout());
+        successFrame.setSize(100, 100);
+
+        ImageIcon successImage = new ImageIcon("./data/rose.jpg");
+        Image image = successImage.getImage();
+        Image newImage = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        successImage = new ImageIcon(newImage);
+
+        JLabel successStatement = new JLabel("Successfully saved!");
+        successFrame.add(successStatement);
+        successFrame.add(new JLabel(successImage));
+        successFrame.pack();
+        successFrame.setVisible(true);
     }
 
     private class SaveFileClickHandler implements ActionListener {

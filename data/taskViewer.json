@@ -1,20 +1,4 @@
 {
-    "owner": "A",
-    "commitments": [
-        {
-            "commitment": "CPSC 210",
-            "category": "class",
-            "tasks": []
-        },
-        {
-            "commitment": "Isaac Lab",
-            "category": "work",
-            "tasks": []
-        },
-        {
-            "commitment": "MATH 100 TA",
-            "category": "work",
-            "tasks": []
-        }
-    ]
+    "owner": "Annah",
+    "commitments": []
 }
