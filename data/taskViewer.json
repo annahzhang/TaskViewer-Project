@@ -1,4 +1,20 @@
 {
     "owner": "Annah",
-    "commitments": []
+    "commitments": [
+        {
+            "commitment": "CPSC 210",
+            "category": "class",
+            "tasks": [{
+                "task": "Phase 3 Project",
+                "due date": "9/9/2022",
+                "complete?": false,
+                "type": "homework"
+            }]
+        },
+        {
+            "commitment": "MATH 100 TA",
+            "category": "work",
+            "tasks": []
+        }
+    ]
 }

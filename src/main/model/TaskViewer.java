@@ -18,6 +18,12 @@ public class TaskViewer {
     }
 
     // MODIFIES: this
+    // EFFECTS: sets task viewer name to given string
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // MODIFIES: this
     // EFFECTS: if unique commitment, adds commitment to commitment list, add the task list to total task list
     //          and return true
     //          otherwise, return false

@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // Unit tests for TaskViewer class
 public class TaskViewerTest {
-    private TaskViewer taskViewerTest1;
+    private TaskViewer taskViewer;
     private Commitment commitment1;
     private Commitment commitment2;
     private Task task1;
@@ -25,7 +25,7 @@ public class TaskViewerTest {
 
     @BeforeEach
     public void setUp() {
-        taskViewerTest1 = new TaskViewer("Annah");
+        taskViewer = new TaskViewer("Annah");
         commitment1 = new Commitment("CPSC 210", "class");
         commitment2 = new Commitment("Isaac Lab", "work");
 
@@ -57,30 +57,36 @@ public class TaskViewerTest {
 
     @Test
     public void testTaskViewer() {
-        assertEquals("Annah", taskViewerTest1.getName());
-        assertEquals(0,taskViewerTest1.getListOfCommitment().size());
+        assertEquals("Annah", taskViewer.getName());
+        assertEquals(0, taskViewer.getListOfCommitment().size());
+    }
+
+    @Test
+    public void testSetName() {
+        taskViewer.setName("Bob");
+        assertEquals("Bob", taskViewer.getName());
     }
 
     @Test
     public void testAddOneCommitment() {
-        assertTrue(taskViewerTest1.addCommitment(commitment1));
-        assertEquals(commitment1, taskViewerTest1.getListOfCommitment().get(0));
-        assertEquals(1, taskViewerTest1.getListOfCommitment().size());
+        assertTrue(taskViewer.addCommitment(commitment1));
+        assertEquals(commitment1, taskViewer.getListOfCommitment().get(0));
+        assertEquals(1, taskViewer.getListOfCommitment().size());
 
-        assertEquals(commitment1.getTaskList(), taskViewerTest1.getListOfAllTasks());
-        assertEquals(3, taskViewerTest1.getListOfAllTasks().size());
+        assertEquals(commitment1.getTaskList(), taskViewer.getListOfAllTasks());
+        assertEquals(3, taskViewer.getListOfAllTasks().size());
     }
 
     @Test
     public void testAddSameCommitment() {
-        assertTrue(taskViewerTest1.addCommitment(commitment1));
-        assertFalse(taskViewerTest1.addCommitment(commitment1));
+        assertTrue(taskViewer.addCommitment(commitment1));
+        assertFalse(taskViewer.addCommitment(commitment1));
 
-        assertEquals(commitment1, taskViewerTest1.getListOfCommitment().get(0));
-        assertEquals(1, taskViewerTest1.getListOfCommitment().size());
+        assertEquals(commitment1, taskViewer.getListOfCommitment().get(0));
+        assertEquals(1, taskViewer.getListOfCommitment().size());
 
-        assertEquals(commitment1.getTaskList(), taskViewerTest1.getListOfAllTasks());
-        assertEquals(3, taskViewerTest1.getListOfAllTasks().size());
+        assertEquals(commitment1.getTaskList(), taskViewer.getListOfAllTasks());
+        assertEquals(3, taskViewer.getListOfAllTasks().size());
     }
 
     @Test
@@ -89,14 +95,14 @@ public class TaskViewerTest {
         totalTaskList.addAll(commitment1.getTaskList());
         totalTaskList.addAll(commitment2.getTaskList());
 
-        assertTrue(taskViewerTest1.addCommitment(commitment1));
-        assertTrue(taskViewerTest1.addCommitment(commitment2));
+        assertTrue(taskViewer.addCommitment(commitment1));
+        assertTrue(taskViewer.addCommitment(commitment2));
 
-        assertEquals(commitment1, taskViewerTest1.getListOfCommitment().get(0));
-        assertEquals(commitment2, taskViewerTest1.getListOfCommitment().get(1));
-        assertEquals(2, taskViewerTest1.getListOfCommitment().size());
+        assertEquals(commitment1, taskViewer.getListOfCommitment().get(0));
+        assertEquals(commitment2, taskViewer.getListOfCommitment().get(1));
+        assertEquals(2, taskViewer.getListOfCommitment().size());
 
-        assertEquals(totalTaskList, taskViewerTest1.getListOfAllTasks());
-        assertEquals(4, taskViewerTest1.getListOfAllTasks().size());
+        assertEquals(totalTaskList, taskViewer.getListOfAllTasks());
+        assertEquals(4, taskViewer.getListOfAllTasks().size());
     }
 }

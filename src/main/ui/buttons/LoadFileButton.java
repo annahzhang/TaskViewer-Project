@@ -40,10 +40,20 @@ public class LoadFileButton extends Button {
     // EFFECTS: loads task viewer to console
     private void loadTaskViewer() {
         try {
-            taskViewer = jsonReader.read();
+            TaskViewer tempTaskViewer = jsonReader.read();
+            copyTaskViewer(tempTaskViewer);
             System.out.println(taskViewer.getName() + "'s Task Viewer is loaded from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Cannot find file " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: takes given task viewer and copies it into original task viewer
+    private void copyTaskViewer(TaskViewer tempTaskViewer) {
+        taskViewer.setName(tempTaskViewer.getName());
+        for (Commitment c : tempTaskViewer.getListOfCommitment()) {
+            taskViewer.addCommitment(c);
         }
     }
 
