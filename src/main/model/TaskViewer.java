@@ -32,12 +32,14 @@ public class TaskViewer {
             return false;
         } else {
             this.commitmentList.add(commitment);
+            EventLog.getInstance().logEvent(new Event("added commitment named " + commitment.getName()));
             return true;
         }
     }
 
     // EFFECTS: returns list of commitments in TaskViewer
     public List<Commitment> getListOfCommitment() {
+        EventLog.getInstance().logEvent(new Event("displayed commitment list for " + this.name + "'s Task Viewer"));
         return this.commitmentList;
     }
 

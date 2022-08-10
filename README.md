@@ -37,3 +37,21 @@ because I would understand my needs the best.
 3. You can locate my visual component by clicking the save file button.
 4. You can save the state of my application by clicking the save file button.
 5. You can reload the state of my application by clicking the load file button.
+
+## Phase 4: Task 2
+
+An example of the events that are printed can be seen below:
+
+added a task named Phase 3 Project to CPSC 210 \
+added commitment named CPSC 210\
+added commitment named MATH 100 TA\
+added a task named Paper 1 to ENGL 100\
+added commitment named ENGL 100\
+loaded information from saved file\
+displayed commitment list for Annah's Task Viewer\
+added commitment named CPSC 210\
+added commitment named MATH 100 TA\
+added commitment named ENGL 100\
+saved information to file\
+
+

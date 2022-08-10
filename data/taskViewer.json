@@ -15,6 +15,16 @@
             "commitment": "MATH 100 TA",
             "category": "work",
             "tasks": []
+        },
+        {
+            "commitment": "ENGL 100",
+            "category": "class",
+            "tasks": [{
+                "task": "Paper 1",
+                "due date": "11/12/2022",
+                "complete?": false,
+                "type": "homework"
+            }]
         }
     ]
 }

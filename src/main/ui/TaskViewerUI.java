@@ -1,10 +1,15 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.TaskViewer;
 import ui.buttons.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Iterator;
 
 public class TaskViewerUI extends JFrame {
     public static final int WIDTH = 300;
@@ -31,7 +36,16 @@ public class TaskViewerUI extends JFrame {
         setTaskViewerName();
 
         createButtons();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println(event.getDescription());
+                }
+                System.exit(0);
+            }
+        });
         setVisible(true);
     }
 
@@ -39,7 +53,7 @@ public class TaskViewerUI extends JFrame {
     // https://github.students.cs.ubc.ca/CPSC210/AlarmSystem.git
 
     // MODIFIES: taskViewer
-    // EFFECTS: initalizes the taskviewer object with given name
+    // EFFECTS: initializes the task viewer object with given name
     private void setTaskViewerName() {
         String name = JOptionPane.showInputDialog(null, "What is your name?",
                 "TaskViewer", JOptionPane.QUESTION_MESSAGE);

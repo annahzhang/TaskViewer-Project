@@ -27,6 +27,7 @@ public class Commitment {
             return false;
         } else {
             this.taskList.add(task);
+            EventLog.getInstance().logEvent(new Event("added a task named " + task.getTaskName() + " to " + this.name));
             return true;
         }
     }
@@ -43,6 +44,7 @@ public class Commitment {
 
     // EFFECTS: returns list of tasks within a commitment
     public List<Task> getTaskList() {
+        EventLog.getInstance().logEvent(new Event("displayed task list for " + this.name));
         return this.taskList;
     }
 

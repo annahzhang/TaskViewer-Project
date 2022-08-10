@@ -4,9 +4,7 @@ package persistence;
 // code based on JsonReader from JsonSerializationDemo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
-import model.Commitment;
-import model.Task;
-import model.TaskViewer;
+import model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -45,11 +43,12 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses task viewer from JSON ojbect and returns it
+    // EFFECTS: parses task viewer from JSON object and returns it
     private TaskViewer parseTaskViewer(JSONObject jsonObject) {
         String name = jsonObject.getString("owner");
         TaskViewer taskViewer = new TaskViewer(name);
         addCommitments(taskViewer, jsonObject);
+        EventLog.getInstance().logEvent(new Event("loaded information from saved file"));
         return taskViewer;
     }
 

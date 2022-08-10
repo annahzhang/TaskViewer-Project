@@ -1,5 +1,7 @@
 package persistence;
 
+import model.Event;
+import model.EventLog;
 import model.TaskViewer;
 import org.json.JSONObject;
 
@@ -36,6 +38,7 @@ public class JsonWriter {
     // EFFECTS: closes writer
     public void close() {
         writer.close();
+        EventLog.getInstance().logEvent(new Event("saved information to file"));
     }
 
     // MODIFIES: this
