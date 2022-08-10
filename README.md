@@ -54,4 +54,15 @@ added commitment named MATH 100 TA\
 added commitment named ENGL 100\
 saved information to file\
 
+## Phase 4: Task 3
 
+*If you had more time to work on the project, is there any refactoring you would do to improve your design? If so, describe the changes you would make.*
+
+I could potentially create enums for commitment category and task type instead of making them open to any string. Additionally,
+I could've created an overarching abstract class or interface that both commitment and task could extend/implement, since they
+have somewhat similar fields. 
+
+In terms of in the UI class, I put a fair amount of functionality within the GUI code, so I could refactor and add more methods
+into the commitment and task classes which would allow me to choose which commitment to add or show tasks to, rather than putting
+all that code in an abstract task button class. In addition, there are some errors that I choose to fix in console or GUI class
+due to the time constraint, that should have been implemented as new methods or improved in existing methods in the model package.
